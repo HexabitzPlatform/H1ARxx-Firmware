@@ -1,5 +1,5 @@
 /*
-    BitzOS (BOS) V0.1.6 - Copyright (C) 2017-2019 Hexabitz
+    BitzOS (BOS) V0.2.0 - Copyright (C) 2017-2019 Hexabitz
     All rights reserved
 
     File Name     : H1AR0.c
@@ -58,12 +58,16 @@ void Module_Init(void)
 	/* USB port */
   MX_USART4_UART_Init();
 	
+	/* Bridge USB and P5 ports by default - only if PUSB is not bridged with any other port */
+	if (portStatus[PUSB] != STREAM)
+		Bridge(PUSB, P5);
+	
 }
 /*-----------------------------------------------------------*/
 
 /* --- H1AR0 message processing task. 
 */
-Module_Status Module_MessagingTask(uint16_t code, uint8_t port, uint8_t src, uint8_t dst)
+Module_Status Module_MessagingTask(uint16_t code, uint8_t port, uint8_t src, uint8_t dst, uint8_t shift)
 {
 	Module_Status result = H1AR0_OK;
 	

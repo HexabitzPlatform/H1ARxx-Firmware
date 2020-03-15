@@ -1,5 +1,5 @@
 /*
-    BitzOS (BOS) V0.1.6 - Copyright (C) 2017-2019 Hexabitz
+    BitzOS (BOS) V0.2.0 - Copyright (C) 2017-2019 Hexabitz
     All rights reserved
 		
     File Name     : H1AR0.c
@@ -13,6 +13,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "BOS.h"
+#include "H1AR0_MemoryMap.h"
 #include "H1AR0_uart.h"	
 #include "H1AR0_gpio.h"	
 #include "H1AR0_dma.h"	
@@ -32,6 +33,7 @@
 #define _P3
 #define _P4 
 #define _P5 
+#define _P6 
 #define _PUSB 
 
 /* Define available USARTs */
@@ -127,12 +129,6 @@ extern void MX_USART4_UART_Init(void);
 extern void MX_USART5_UART_Init(void);
 extern void MX_USART6_UART_Init(void);
 
-
-
-/* -----------------------------------------------------------------------
-	|														Message Codes	 														 	|
-   ----------------------------------------------------------------------- 
-*/
 
 
 
