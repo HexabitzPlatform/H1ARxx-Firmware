@@ -1,5 +1,5 @@
 /*
-    BitzOS (BOS) V0.2.3 - Copyright (C) 2017-2019 Hexabitz
+    BitzOS (BOS) V0.2.4 - Copyright (C) 2017-2021 Hexabitz
     All rights reserved
 		
     File Name     : H1AR0.c
@@ -128,6 +128,7 @@ extern void MX_USART3_UART_Init(void);
 extern void MX_USART4_UART_Init(void);
 extern void MX_USART5_UART_Init(void);
 extern void MX_USART6_UART_Init(void);
+extern void SystemClock_Config(void);
 
 
 
