@@ -21,17 +21,6 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 BOS \
-Debug/BOS \
-Debug/H1AR0 \
-Debug/H1AR0/gcc \
-Debug \
-Debug/Thirdparty/CMSIS/Device/ST/STM32F0xx/Source/Templates \
-Debug/Thirdparty/Middleware/FreeRTOS/Source/CMSIS_RTOS \
-Debug/Thirdparty/Middleware/FreeRTOS/Source \
-Debug/Thirdparty/Middleware/FreeRTOS/Source/portable/GCC/ARM_CM0 \
-Debug/Thirdparty/Middleware/FreeRTOS/Source/portable/MemMang \
-Debug/Thirdparty/STM32F0xx_HAL_Driver/Src \
-Debug/User \
 H1AR0 \
 Thirdparty/CMSIS/Device/ST/STM32F0xx/Source/Templates \
 Thirdparty/Middleware/FreeRTOS/Source/CMSIS_RTOS \
