@@ -72,14 +72,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/BOS/BOS_CLI.c</locationURI>
 		</link>
 		<link>
-<<<<<<< HEAD
 			<name>BOS/BOS_CLIcommands.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/BOS/BOS_CLIcommands.c</locationURI>
 		</link>
 		<link>
-=======
->>>>>>> master
 			<name>BOS/BOS_MsgCodes.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/BOS/BOS_MsgCodes.h</locationURI>
@@ -110,7 +107,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/BOS/BOS_freertos.c</locationURI>
 		</link>
 		<link>
-<<<<<<< HEAD
 			<name>BOS/BOS_inputs.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/BOS/BOS_inputs.c</locationURI>
@@ -126,8 +122,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/BOS/BOS_msgparser.c</locationURI>
 		</link>
 		<link>
-=======
->>>>>>> master
 			<name>BOS/BOS_utils.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/BOS/BOS_utils.h</locationURI>
@@ -188,7 +182,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/H1AR0/H1AR0_it.c</locationURI>
 		</link>
 		<link>
-<<<<<<< HEAD
 			<name>H1AR0/H1AR0_rtc.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/H1AR0/H1AR0_rtc.c</locationURI>
@@ -199,8 +192,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/H1AR0/H1AR0_timers.c</locationURI>
 		</link>
 		<link>
-=======
->>>>>>> master
 			<name>H1AR0/H1AR0_uart.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/H1AR0/H1AR0_uart.c</locationURI>
@@ -211,15 +202,9 @@
 			<locationURI>PARENT-1-PROJECT_LOC/H1AR0/H1AR0_uart.h</locationURI>
 		</link>
 		<link>
-<<<<<<< HEAD
 			<name>H1AR0/startup_stm32f091xc.s</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/H1AR0/startup_stm32f091xc.s</locationURI>
-=======
-			<name>H1AR0/gcc</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
->>>>>>> master
 		</link>
 		<link>
 			<name>H1AR0/stm32f0xx_hal_conf.h</name>
@@ -262,20 +247,9 @@
 			<locationURI>PARENT-1-PROJECT_LOC/User/project.h</locationURI>
 		</link>
 		<link>
-<<<<<<< HEAD
 			<name>User/topology_1.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/User/topology_1.h</locationURI>
-=======
-			<name>User/topology_ex.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/User/topology_ex.h</locationURI>
-		</link>
-		<link>
-			<name>H1AR0/gcc/startup_stm32f091xc.s</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/H1AR0/gcc/startup_stm32f091xc.s</locationURI>
->>>>>>> master
 		</link>
 		<link>
 			<name>Thirdparty/CMSIS/Device</name>
@@ -1118,18 +1092,15 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Thirdparty/Middleware/FreeRTOS/Source/portable/GCC/ARM_CM0/portmacro.h</locationURI>
 		</link>
 	</linkedResources>
-<<<<<<< HEAD
 	<filteredResources>
 		<filter>
-			<id>1614855843713</id>
+			<id>1615122955895</id>
 			<name></name>
 			<type>10</type>
 			<matcher>
 				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-H1ARxx</arguments>
+				<arguments>1.0-name-matches-false-false-H1ARx</arguments>
 			</matcher>
 		</filter>
 	</filteredResources>
-=======
->>>>>>> master
 </projectDescription>
