@@ -1,0 +1,4 @@
+H1AR0_gpio.c:62:6:IND_LED_Init	32	static
+H1AR0_gpio.c:49:6:GPIO_Init	32	static
+H1AR0_gpio.c:75:12:GetPortGPIOs	24	static
+H1AR0_gpio.c:163:9:IsFactoryReset	88	static
