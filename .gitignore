@@ -1,7 +1,5 @@
-MDK-ARM/Objects/
-MDK-ARM/Listings/
 *.Admin
-MDK-ARM/H1ARx.uvguix.HP
-MDK-ARM/H1ARx.uvoptx
-MDK-ARM/H1ARx.uvprojx
-STM32CubeIDE/.settings/language.settings.xml
+*.mk
+*.o
+*.d
+
