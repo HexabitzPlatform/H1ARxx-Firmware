@@ -1,6 +1,6 @@
 /*
-    BitzOS (BOS) V0.2.4 - Copyright (C) 2017-2021 Hexabitz
-    All rights reserved
+ BitzOS (BOS) V0.2.5 - Copyright (C) 2017-2021 Hexabitz
+ All rights reserved
 
     File Name     : H1AR0.c
     Description   : Source code for module H1AR0.
@@ -12,7 +12,7 @@
 			>> USART 4 for FT230XQ.
 			
 */
-	
+
 /* Includes ------------------------------------------------------------------*/
 #include "BOS.h"
 
@@ -202,7 +202,7 @@ uint8_t ClearROtopology(void)
 /*-----------------------------------------------------------*/
 /* --- H1AR0 module initialization. 
 */
-void Module_Init(void)
+void Module_Peripheral_Init(void)
 {
 	/* Array ports */
   MX_USART1_UART_Init();
@@ -249,6 +249,10 @@ void RegisterModuleCLICommands(void)
 
 /*-----------------------------------------------------------*/
 
+
+void ExecuteMonitor(void){
+
+}
 /* --- Get the port for a given UART. 
 */
 uint8_t GetPort(UART_HandleTypeDef *huart)
