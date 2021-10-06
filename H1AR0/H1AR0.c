@@ -249,10 +249,6 @@ void RegisterModuleCLICommands(void)
 
 /*-----------------------------------------------------------*/
 
-
-void ExecuteMonitor(void){
-
-}
 /* --- Get the port for a given UART. 
 */
 uint8_t GetPort(UART_HandleTypeDef *huart)

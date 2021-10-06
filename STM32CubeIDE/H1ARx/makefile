@@ -61,8 +61,8 @@ all:
 main-build: H1ARx.elf secondary-outputs
 
 # Tool invocations
-H1ARx.elf: $(OBJS) $(USER_OBJS) D:\Hexabitz\for\ Release\Modules\ firmware\H1ARxx\STM32CubeIDE\STM32F091RCTX_FLASH.ld
-	arm-none-eabi-gcc -o "H1ARx.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"D:\Hexabitz\for Release\Modules firmware\H1ARxx\STM32CubeIDE\STM32F091RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="H1ARx.map" -Wl,--gc-sections -static  -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+H1ARx.elf: $(OBJS) $(USER_OBJS) D:\Hexabitz\ release\H1ARxx\STM32CubeIDE\STM32F091RCTX_FLASH.ld
+	arm-none-eabi-gcc -o "H1ARx.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"D:\Hexabitz release\H1ARxx\STM32CubeIDE\STM32F091RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="H1ARx.map" -Wl,--gc-sections -static  -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
