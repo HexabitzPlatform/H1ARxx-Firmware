@@ -1,10 +1,11 @@
 /*
-    BitzOS (BOS) V0.2.4 - Copyright (C) 2017-2021 Hexabitz
-    All rights reserved
-		
-    File Name     : H1AR0_dma.c
-    Description   : Peripheral DMA setup source file.
-*/
+ BitzOS (BOS) V0.2.5 - Copyright (C) 2017-2021 Hexabitz
+ All rights reserved
+
+ File Name     : H1AR0_dma.c
+ Description   : source file Contains Peripheral DMA setup .
+
+ */
 
 /* Includes ------------------------------------------------------------------*/
 #include "BOS.h"
@@ -617,6 +618,6 @@ uint8_t  CalculateCRC8(uint32_t pBuffer[], uint16_t size)
 	return 0;
 }
 
-/*-----------------------------------------------------------*/
+/* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
