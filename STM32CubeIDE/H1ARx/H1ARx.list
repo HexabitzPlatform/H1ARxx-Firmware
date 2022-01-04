@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000028  00000000  00000000  00030a78  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0005164f  00000000  00000000  00030aa0  2**0
+ 13 .debug_info   00051649  00000000  00000000  00030aa0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_abbrev 000096a3  00000000  00000000  000820ef  2**0
+ 14 .debug_abbrev 000096a3  00000000  00000000  000820e9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    0001b0e0  00000000  00000000  0008b792  2**0
+ 15 .debug_loc    0001b0e0  00000000  00000000  0008b78c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_aranges 00001a48  00000000  00000000  000a6878  2**3
+ 16 .debug_aranges 00001a48  00000000  00000000  000a6870  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_ranges 00002e60  00000000  00000000  000a82c0  2**3
+ 17 .debug_ranges 00002e60  00000000  00000000  000a82b8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_line   0001755c  00000000  00000000  000ab120  2**0
+ 18 .debug_line   0001755c  00000000  00000000  000ab118  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .debug_str    0000a33a  00000000  00000000  000c267c  2**0
+ 19 .debug_str    0000a33a  00000000  00000000  000c2674  2**0
                   CONTENTS, READONLY, DEBUGGING
- 20 .comment      0000007b  00000000  00000000  000cc9b6  2**0
+ 20 .comment      0000007b  00000000  00000000  000cc9ae  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  0000628c  00000000  00000000  000cca34  2**2
+ 21 .debug_frame  0000628c  00000000  00000000  000cca2c  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -22828,7 +22828,7 @@ BOS_Status SendMessageFromPort(uint8_t port,uint8_t src,uint8_t dst,uint16_t cod
  8009768:	70a5      	strb	r5, [r4, #2]
 	memcpy(crcBuffer,&message[0],length + 3);
  800976a:	f009 fac4 	bl	8012cf6 <memcpy>
-	message[length + 3] =CalculateCRC8((uint32_t* )&crcBuffer,(length + 3));
+	message[length + 3] =CalculateCRC8(crcBuffer,(length + 3));
  800976e:	b2ab      	uxth	r3, r5
  8009770:	4651      	mov	r1, sl
  8009772:	0030      	movs	r0, r6
@@ -22837,7 +22837,7 @@ BOS_Status SendMessageFromPort(uint8_t port,uint8_t src,uint8_t dst,uint16_t cod
  800977a:	4653      	mov	r3, sl
 	memset(crcBuffer,0,sizeof(crcBuffer));
  800977c:	2238      	movs	r2, #56	; 0x38
-	message[length + 3] =CalculateCRC8((uint32_t* )&crcBuffer,(length + 3));
+	message[length + 3] =CalculateCRC8(crcBuffer,(length + 3));
  800977e:	54e0      	strb	r0, [r4, r3]
 	memset(crcBuffer,0,sizeof(crcBuffer));
  8009780:	2100      	movs	r1, #0
@@ -23758,14 +23758,14 @@ void BackEndTask(void *argument){
  8009d40:	9a01      	ldr	r2, [sp, #4]
  8009d42:	4894      	ldr	r0, [pc, #592]	; (8009f94 <BackEndTask+0x380>)
  8009d44:	f008 ffd7 	bl	8012cf6 <memcpy>
-					crc8 =CalculateCRC8((uint32_t* )&crcBuffer,(packetLength + 3));
+					crc8 =CalculateCRC8(crcBuffer,(packetLength + 3));
  8009d48:	466b      	mov	r3, sp
  8009d4a:	4892      	ldr	r0, [pc, #584]	; (8009f94 <BackEndTask+0x380>)
  8009d4c:	8899      	ldrh	r1, [r3, #4]
  8009d4e:	f002 fd57 	bl	800c800 <CalculateCRC8>
 					memset(crcBuffer,0,sizeof(crcBuffer));
  8009d52:	2238      	movs	r2, #56	; 0x38
-					crc8 =CalculateCRC8((uint32_t* )&crcBuffer,(packetLength + 3));
+					crc8 =CalculateCRC8(crcBuffer,(packetLength + 3));
  8009d54:	9001      	str	r0, [sp, #4]
 					memset(crcBuffer,0,sizeof(crcBuffer));
  8009d56:	2100      	movs	r1, #0
@@ -30301,39 +30301,39 @@ void HAL_CRC_MspInit(CRC_HandleTypeDef* hcrc)
 	__HAL_RCC_CRC_CLK_DISABLE();
 }
 
-uint8_t  CalculateCRC8(uint32_t pBuffer[], uint16_t size)
+uint8_t  CalculateCRC8(uint8_t pBuffer[], uint16_t size)
 {
  800c800:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
  800c802:	0004      	movs	r4, r0
  800c804:	000d      	movs	r5, r1
-			pTemp=HAL_CRC_Accumulate(&hcrc, &pBuffer[(size/4)*4], 1);
-		}
-		return pTemp;
-	}
-	else
-	return 0;
+      pTemp=HAL_CRC_Accumulate(&hcrc, (uint32_t*)&pBuffer[(size/4)*4], 1);
+    }
+    return pTemp;
+  }
+  else
+  return 0;
  800c806:	2000      	movs	r0, #0
-	if (NULL!=pBuffer && 0!=size)
+  if (NULL!=pBuffer && 0!=size)
  800c808:	2c00      	cmp	r4, #0
  800c80a:	d001      	beq.n	800c810 <CalculateCRC8+0x10>
  800c80c:	2900      	cmp	r1, #0
  800c80e:	d100      	bne.n	800c812 <CalculateCRC8+0x12>
 }
  800c810:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
-		pTemp=HAL_CRC_Calculate(&hcrc, pBuffer, size/4);
+    pTemp=HAL_CRC_Calculate(&hcrc, (uint32_t*)pBuffer, size/4);
  800c812:	4f09      	ldr	r7, [pc, #36]	; (800c838 <CalculateCRC8+0x38>)
  800c814:	088e      	lsrs	r6, r1, #2
  800c816:	0032      	movs	r2, r6
  800c818:	0021      	movs	r1, r4
  800c81a:	0038      	movs	r0, r7
  800c81c:	f003 fa98 	bl	800fd50 <HAL_CRC_Calculate>
-		if ((size%4)!=0)
+    if ((size%4)!=0)
  800c820:	07ab      	lsls	r3, r5, #30
  800c822:	d101      	bne.n	800c828 <CalculateCRC8+0x28>
-			pTemp=HAL_CRC_Accumulate(&hcrc, &pBuffer[(size/4)*4], 1);
+      pTemp=HAL_CRC_Accumulate(&hcrc, (uint32_t*)&pBuffer[(size/4)*4], 1);
  800c824:	b2c0      	uxtb	r0, r0
  800c826:	e7f3      	b.n	800c810 <CalculateCRC8+0x10>
- 800c828:	0131      	lsls	r1, r6, #4
+ 800c828:	00b1      	lsls	r1, r6, #2
  800c82a:	1861      	adds	r1, r4, r1
  800c82c:	2201      	movs	r2, #1
  800c82e:	0038      	movs	r0, r7
