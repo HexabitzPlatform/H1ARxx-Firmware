@@ -17,7 +17,8 @@
 #include "H1AR0_uart.h"	
 #include "H1AR0_gpio.h"	
 #include "H1AR0_dma.h"	
-	
+#include "H1AR0_eeprom.h"
+#include "H1AR0_inputs.h"
 	
 /* Exported definitions -------------------------------------------------------*/
 
@@ -138,12 +139,14 @@ extern void SystemClock_Config(void);
 	|																APIs	 																 	|
    ----------------------------------------------------------------------- 
 */
-
+void SetupPortForRemoteBootloaderUpdate(uint8_t port);
+void remoteBootloaderUpdate(uint8_t src,uint8_t dst,uint8_t inport,uint8_t outport);
 
 
 /* -----------------------------------------------------------------------
 	|															Commands																 	|
    ----------------------------------------------------------------------- 
+
 */
 
 
