@@ -1,5 +1,5 @@
 /*
-    BitzOS (BOS) V0.2.5 - Copyright (C) 2017-2021 Hexabitz
+    BitzOS (BOS) V0.2.6 - Copyright (C) 2017-2022 Hexabitz
     All rights reserved
 		
     File Name     : H1AR0.c
@@ -17,7 +17,8 @@
 #include "H1AR0_uart.h"	
 #include "H1AR0_gpio.h"	
 #include "H1AR0_dma.h"	
-	
+#include "H1AR0_eeprom.h"
+#include "H1AR0_inputs.h"
 	
 /* Exported definitions -------------------------------------------------------*/
 
@@ -138,12 +139,14 @@ extern void SystemClock_Config(void);
 	|																APIs	 																 	|
    ----------------------------------------------------------------------- 
 */
-
+void SetupPortForRemoteBootloaderUpdate(uint8_t port);
+void remoteBootloaderUpdate(uint8_t src,uint8_t dst,uint8_t inport,uint8_t outport);
 
 
 /* -----------------------------------------------------------------------
 	|															Commands																 	|
    ----------------------------------------------------------------------- 
+
 */
 
 

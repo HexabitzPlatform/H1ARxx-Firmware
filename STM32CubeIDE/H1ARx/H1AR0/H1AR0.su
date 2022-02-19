@@ -1,7 +1,9 @@
-H1AR0.c:50:6:SystemClock_Config	128	static
-H1AR0.c:98:9:SaveToRO	64	static
-H1AR0.c:194:9:ClearROtopology	8	static
-H1AR0.c:205:6:Module_Peripheral_Init	8	static
-H1AR0.c:226:15:Module_MessagingTask	0	static
-H1AR0.c:245:6:RegisterModuleCLICommands	0	static
-H1AR0.c:254:9:GetPort	0	static
+H1AR0.c:51:6:SystemClock_Config	128	static
+H1AR0.c:99:9:SaveToRO	64	static
+H1AR0.c:195:9:ClearROtopology	8	static
+H1AR0.c:256:6:SetupPortForRemoteBootloaderUpdate	8	static
+H1AR0.c:206:6:remoteBootloaderUpdate	48	static
+H1AR0.c:271:6:Module_Peripheral_Init	8	static
+H1AR0.c:292:15:Module_MessagingTask	0	static
+H1AR0.c:311:6:RegisterModuleCLICommands	0	static
+H1AR0.c:320:9:GetPort	0	static
