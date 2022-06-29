@@ -219,6 +219,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	uint8_t port_number = GetPort(huart);
 	uint8_t port_index = port_number - 1;
 	if(Rx_Data[port_index] == 0x0D && portStatus[port_number] == FREE)
+	{
 		for(int i=0;i<=NumOfPorts;i++) // Free previous CLI port
 		{
 			if(portStatus[i] == CLI)
