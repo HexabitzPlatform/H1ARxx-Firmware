@@ -39,9 +39,17 @@ void SetupPortForRemoteBootloaderUpdate(uint8_t port);
 void remoteBootloaderUpdate(uint8_t src,uint8_t dst,uint8_t inport,uint8_t outport);
 
 /* Create CLI commands --------------------------------------------------------*/
+portBASE_TYPE CLI_Transmit_DataCommand(int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString);
 
 
-
+/* CLI command structure : Transmit_Data */
+const CLI_Command_Definition_t CLI_Transmit_DataCommandDefinition =
+{
+	( const int8_t * ) "transmit_data", /* The command string to type. */
+	( const int8_t * ) "transmit_data :\r\n Parameters required to execute a Transmit_Data: my data \r\n\r\n",
+	CLI_Transmit_DataCommand, /* The function to run. */
+	1 /* one parameters are expected. */
+};
 
 /* -----------------------------------------------------------------------
 	|												 Private Functions	 														|
@@ -271,14 +279,14 @@ void SetupPortForRemoteBootloaderUpdate(uint8_t port){
 void Module_Peripheral_Init(void)
 {
 	/* Array ports */
-  MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
+  MX_USART4_UART_Init();
   MX_USART5_UART_Init();
   MX_USART6_UART_Init();
 	
 	/* USB port */
-  MX_USART4_UART_Init();
+  MX_USART1_UART_Init();
 	
 	/* Bridge USB and P5 ports by default - only if PUSB is not bridged with any other port */
 	if (portStatus[PUSB] != STREAM)
@@ -292,9 +300,14 @@ void Module_Peripheral_Init(void)
 Module_Status Module_MessagingTask(uint16_t code, uint8_t port, uint8_t src, uint8_t dst, uint8_t shift)
 {
 	Module_Status result = H1AR0_OK;
-	
+	uint16_t Size;
 	switch (code)
 	{
+
+	case CODE_H1AR0_Transmit_Data:
+		Size=(uint16_t)cMessage[port - 1][shift];
+		TransmitData(&cMessage[port - 1][1+shift],Size);
+		break;
 
 		default:
 			result = H1AR0_ERR_UnknownMessage;
@@ -310,6 +323,7 @@ Module_Status Module_MessagingTask(uint16_t code, uint8_t port, uint8_t src, uin
 */
 void RegisterModuleCLICommands(void)
 {
+	 FreeRTOS_CLIRegisterCommand(&CLI_Transmit_DataCommandDefinition);
 
 }
 
@@ -323,11 +337,11 @@ uint8_t GetPort(UART_HandleTypeDef *huart)
 			return P1;
 	else if (huart->Instance == USART6)
 			return P2;
-	else if (huart->Instance == USART3)
-			return P3;
-	else if (huart->Instance == USART1)
-			return P4;
 	else if (huart->Instance == USART5)
+			return P3;
+	else if (huart->Instance == USART4)
+			return P4;
+	else if (huart->Instance == USART3)
 			return P5;
 	else if (huart->Instance == USART4)
 			return P6;
@@ -340,8 +354,25 @@ uint8_t GetPort(UART_HandleTypeDef *huart)
 	|																APIs	 																 	|
    ----------------------------------------------------------------------- 
 */
+Module_Status TransmitData(uint8_t* data,uint16_t Size){
+	Module_Status status=H1AR0_OK;
 
+	if(data!=NULL && Size!=0)
+	{
+	for(int i=0;i<Size;i++)
+		{
+			writePxMutex(PUSB, (char *)&data[0+i], 1, cmd50ms, HAL_MAX_DELAY);
+		}
 
+	}
+	else
+	{
+		status=H1AR0_ERROR;
+
+	}
+
+	return status;
+}
 
 /*-----------------------------------------------------------*/
 
@@ -349,7 +380,38 @@ uint8_t GetPort(UART_HandleTypeDef *huart)
 	|															Commands																 	|
    ----------------------------------------------------------------------- 
 */
+portBASE_TYPE CLI_Transmit_DataCommand( int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString ){
+	Module_Status status = H1AR0_OK;;
 
+
+
+	static int8_t *pcParameterString1;
+	portBASE_TYPE xParameterStringLength1 =0;
+
+	static const int8_t *pcOKMessage=(int8_t* )"USB-B to UART Converter is on \r\n  \n\r";
+	static const int8_t *pcWrongParamsMessage =(int8_t* )"Wrong Params!\n\r";
+
+
+	(void )xWriteBufferLen;
+	configASSERT(pcWriteBuffer);
+
+	pcParameterString1 =(int8_t* )FreeRTOS_CLIGetParameter(pcCommandString, 1, &xParameterStringLength1 );
+
+
+	status=TransmitData(pcParameterString1, xParameterStringLength1);
+	if(status == H1AR0_OK)
+	{
+		sprintf((char* )pcWriteBuffer,(char* )pcOKMessage,pcParameterString1);
+
+	}
+
+	else if(status == H1AR0_ERROR)
+		strcpy((char* )pcWriteBuffer,(char* )pcWrongParamsMessage);
+
+
+
+	return pdFALSE;
+}
 
 
 /*-----------------------------------------------------------*/

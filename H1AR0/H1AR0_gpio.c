@@ -20,9 +20,9 @@
 void GPIO_Init(void)
 {
   /* GPIO Ports Clock Enable */
-  __GPIOC_CLK_ENABLE();
-  __GPIOA_CLK_ENABLE();
-  __GPIOD_CLK_ENABLE();
+    __GPIOC_CLK_ENABLE();
+    __GPIOA_CLK_ENABLE();
+    __GPIOD_CLK_ENABLE();
 	__GPIOB_CLK_ENABLE();
 	__GPIOF_CLK_ENABLE();		// for HSE and Boot0
 	
@@ -40,6 +40,8 @@ void IND_LED_Init(void)
 	GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
 	HAL_GPIO_Init(_IND_LED_PORT, &GPIO_InitStruct);
 }
+
+
 
 /* --- Get GPIO pins and ports of this array port
 */
@@ -131,6 +133,8 @@ BOS_Status GetPortGPIOs(uint8_t port, uint32_t *TX_Port, uint16_t *TX_Pin, uint3
 /* --- Check for factory reset condition: 
 				- P1 TXD is connected to last port RXD    
 */
+
+
 uint8_t IsFactoryReset(void)
 {
 	GPIO_InitTypeDef GPIO_InitStruct;
