@@ -16,8 +16,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "BOS.h"
 #include "H1AR0_eeprom.h"
-uint8_t bufferRx[9];
-HAL_StatusTypeDef Status;
+//uint8_t bufferRx[9];
+//HAL_StatusTypeDef Status;
 
 /* Define UART variables */
 UART_HandleTypeDef huart1;
@@ -290,7 +290,7 @@ void Module_Peripheral_Init(void)
 	/* USB port */
   MX_USART1_UART_Init();
 
-  Status = HAL_UART_Receive_DMA(&huart1, bufferRx, 9);
+  //Status = HAL_UART_Receive_DMA(&huart1, bufferRx, 9);
 	
 //	/* Bridge USB and P5 ports by default - only if PUSB is not bridged with any other port */
 //	if (portStatus[PUSB] != STREAM)
