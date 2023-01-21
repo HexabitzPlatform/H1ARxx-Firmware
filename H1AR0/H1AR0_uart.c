@@ -19,7 +19,6 @@ FlagStatus UartTxReady = RESET;
 #else
 	 uint16_t arrayPortsDir[__N];
 #endif 
-DMA_HandleTypeDef hdma_usart1_rx;
 
 /* USART1 init function */
 #ifdef _Usart1
@@ -183,49 +182,16 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
     GPIO_InitStruct.Alternate = USART1_AF;
     HAL_GPIO_Init(USART1_RX_PORT, &GPIO_InitStruct);
-
-    /* USART1 clock enable */
-       __HAL_RCC_USART1_CLK_ENABLE();
-
-       __HAL_RCC_GPIOA_CLK_ENABLE();
-       /**USART1 GPIO Configuration
-       PA9     ------> USART1_TX
-       PA10     ------> USART1_RX
-       */
-       GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
-       GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-       GPIO_InitStruct.Pull = GPIO_NOPULL;
-       GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
-       GPIO_InitStruct.Alternate = GPIO_AF1_USART1;
-       HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-       /* USART1 DMA Init */
-       /* USART1_RX Init */
-       hdma_usart1_rx.Instance = DMA1_Channel1;
-       hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
-       hdma_usart1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
-       hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
-       hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
-       hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
-       hdma_usart1_rx.Init.Mode = DMA_CIRCULAR;
-       hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
-       HAL_DMA_Init(&hdma_usart1_rx);
-
-
-       __HAL_DMA1_REMAP(HAL_DMA1_CH1_USART1_RX);
-
-       __HAL_LINKDMA(huart,hdmarx,hdma_usart1_rx);
-
    /*
     PA11     ------> USART1_CTS
      PA12     ------> USART1_RTS
      */
-//     GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
-//     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-//     GPIO_InitStruct.Pull = GPIO_NOPULL;
-//     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
-//     GPIO_InitStruct.Alternate = GPIO_AF1_USART1;
-//     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+     GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
+     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+     GPIO_InitStruct.Pull = GPIO_NOPULL;
+     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+     GPIO_InitStruct.Alternate = GPIO_AF1_USART1;
+     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     /* Peripheral interrupt init*/
     HAL_NVIC_SetPriority(USART1_IRQn, 1, 0);
