@@ -26,6 +26,9 @@ void GPIO_Init(void)
 	__GPIOB_CLK_ENABLE();
 	__GPIOF_CLK_ENABLE();		// for HSE and Boot0
 	
+	  __HAL_RCC_GPIOA_CLK_ENABLE();
+
+
 	IND_LED_Init();
 }
 

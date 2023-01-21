@@ -9,7 +9,7 @@
 #include "BOS.h"
 
 /* Private variables ---------------------------------------------------------*/
-
+uint8_t buff_rx[5];
 /* Private function prototypes -----------------------------------------------*/
 
 /* Main function ------------------------------------------------------------*/
@@ -26,7 +26,7 @@ int main(void){
 
 /* User Task */
 void UserTask(void *argument){
-
+	HAL_UART_Receive_DMA(&huart1, buff_rx,sizeof(buff_rx));
 	// put your code here, to run repeatedly.
 	while(1){
 

@@ -25,7 +25,7 @@ BOS.c:1285:12:FindBroadcastRoutes	48	dynamic
 BOS.c:1366:9:FindRoute	104	static
 BOS.c:1449:9:minArr	20	static
 BOS.c:1471:9:QnotEmpty	0	static
-BOS.c:1484:6:DisplayTopology	56	static
+BOS.c:1484:6:DisplayTopology	48	static
 BOS.c:1524:6:DisplayPortsDir	48	static
 BOS.c:1549:6:DisplayModuleStatus	56	static
 BOS.c:1640:9:GetID	24	static

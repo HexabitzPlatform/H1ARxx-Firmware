@@ -47,6 +47,8 @@ void DMA_Init(void)
 	/* DMA controller clock enable */
 	__DMA1_CLK_ENABLE();
 	__DMA2_CLK_ENABLE();
+	  __HAL_RCC_DMA1_CLK_ENABLE();
+
 	
 	/* Initialize messaging RX DMAs x 6 - Update for non-standard MCUs */
 #ifdef _P1
@@ -203,7 +205,7 @@ void DMA_MSG_RX_Setup(UART_HandleTypeDef *huart, DMA_HandleTypeDef *hDMA)
 	
 	/* Start DMA stream	*/	
 	//HAL_UART_Receive_DMA(huart, (uint8_t *)&UARTRxBuf[GetPort(huart)-1], MSG_RX_BUF_SIZE);			
-	HAL_UART_Receive_DMA(huart,(uint8_t* )&Rx_Data[GetPort(huart) - 1] , 1);	
+	HAL_UART_Receive_DMA(huart,(uint8_t* )&Rx_Data[GetPort(huart) - 1] , 1);
 }
 
 /*-----------------------------------------------------------*/
@@ -254,17 +256,17 @@ void DMA_STREAM_Setup(UART_HandleTypeDef* huartSrc, UART_HandleTypeDef* huartDst
 {	
 	DMA_HandleTypeDef *hDMA;
 	uint8_t port = GetPort(huartSrc);
-	
+
 	/* Select DMA struct */
 	hDMA = &streamDMA[port-1];
-	
+
 	/* Remap and link to UART RX */
 	RemapAndLinkDMAtoUARTRx(huartSrc, hDMA);
-	
+
 	/* Setup DMA interrupts */
 	SetupDMAInterrupts(hDMA, STREAM_DMA_INT_PRIORITY);
-	
-	/* Start DMA stream	*/	
+
+	/* Start DMA stream	*/
 	huartSrc->State = HAL_UART_STATE_READY;
 	HAL_UART_Receive_DMA(huartSrc, (uint8_t *)(&(huartDst->Instance->TDR)), num);
 }
@@ -419,107 +421,107 @@ void RemapAndLinkDMAtoUARTRx(UART_HandleTypeDef *huart, DMA_HandleTypeDef *hDMA)
 	} else if (huart->Instance == USART1 && hDMA->Instance == DMA1_Channel3) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH3_USART1_RX);
 	} else if (huart->Instance == USART1 && hDMA->Instance == DMA1_Channel5) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART1_RX);		
+		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART1_RX);
 	} else if (huart->Instance == USART1 && hDMA->Instance == DMA1_Channel6) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART1_RX);	
+		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART1_RX);
 	} else if (huart->Instance == USART1 && hDMA->Instance == DMA2_Channel2) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART1_RX);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART1_RX);
 	} else if (huart->Instance == USART1 && hDMA->Instance == DMA2_Channel3) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART1_RX);	
-	// USART 2	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART1_RX);
+	// USART 2
 	} else if (huart->Instance == USART2 && hDMA->Instance == DMA1_Channel1) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH1_USART2_RX);
 	} else if (huart->Instance == USART2 && hDMA->Instance == DMA1_Channel3) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH3_USART2_RX);
 	} else if (huart->Instance == USART2 && hDMA->Instance == DMA1_Channel5) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART2_RX);		
+		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART2_RX);
 	} else if (huart->Instance == USART2 && hDMA->Instance == DMA1_Channel6) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART2_RX);	
+		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART2_RX);
 	} else if (huart->Instance == USART2 && hDMA->Instance == DMA2_Channel2) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART2_RX);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART2_RX);
 	} else if (huart->Instance == USART2 && hDMA->Instance == DMA2_Channel3) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART2_RX);	
-	// USART 3	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART2_RX);
+	// USART 3
 	} else if (huart->Instance == USART3 && hDMA->Instance == DMA1_Channel1) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH1_USART3_RX);
 	} else if (huart->Instance == USART3 && hDMA->Instance == DMA1_Channel3) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH3_USART3_RX);
 	} else if (huart->Instance == USART3 && hDMA->Instance == DMA1_Channel5) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART3_RX);		
+		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART3_RX);
 	} else if (huart->Instance == USART3 && hDMA->Instance == DMA1_Channel6) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART3_RX);	
+		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART3_RX);
 	} else if (huart->Instance == USART3 && hDMA->Instance == DMA2_Channel2) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART3_RX);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART3_RX);
 	} else if (huart->Instance == USART3 && hDMA->Instance == DMA2_Channel3) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART3_RX);			
-	// USART 4	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART3_RX);
+	// USART 4
 	} else if (huart->Instance == USART4 && hDMA->Instance == DMA1_Channel1) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH1_USART4_RX);
 	} else if (huart->Instance == USART4 && hDMA->Instance == DMA1_Channel3) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH3_USART4_RX);
 	} else if (huart->Instance == USART4 && hDMA->Instance == DMA1_Channel5) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART4_RX);		
+		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART4_RX);
 	} else if (huart->Instance == USART4 && hDMA->Instance == DMA1_Channel6) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART4_RX);	
+		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART4_RX);
 	} else if (huart->Instance == USART4 && hDMA->Instance == DMA2_Channel2) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART4_RX);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART4_RX);
 	} else if (huart->Instance == USART4 && hDMA->Instance == DMA2_Channel3) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART4_RX);				
-	// USART 5	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART4_RX);
+	// USART 5
 	} else if (huart->Instance == USART5 && hDMA->Instance == DMA1_Channel1) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH1_USART5_RX);
 	} else if (huart->Instance == USART5 && hDMA->Instance == DMA1_Channel3) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH3_USART5_RX);
 	} else if (huart->Instance == USART5 && hDMA->Instance == DMA1_Channel5) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART5_RX);		
+		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART5_RX);
 	} else if (huart->Instance == USART5 && hDMA->Instance == DMA1_Channel6) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART5_RX);	
+		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART5_RX);
 	} else if (huart->Instance == USART5 && hDMA->Instance == DMA2_Channel2) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART5_RX);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART5_RX);
 	} else if (huart->Instance == USART5 && hDMA->Instance == DMA2_Channel3) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART5_RX);					
-	// USART 6	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART5_RX);
+	// USART 6
 	} else if (huart->Instance == USART6 && hDMA->Instance == DMA1_Channel1) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH1_USART6_RX);
 	} else if (huart->Instance == USART6 && hDMA->Instance == DMA1_Channel3) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH3_USART6_RX);
 	} else if (huart->Instance == USART6 && hDMA->Instance == DMA1_Channel5) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART6_RX);		
+		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART6_RX);
 	} else if (huart->Instance == USART6 && hDMA->Instance == DMA1_Channel6) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART6_RX);	
+		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART6_RX);
 	} else if (huart->Instance == USART6 && hDMA->Instance == DMA2_Channel2) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART6_RX);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART6_RX);
 	} else if (huart->Instance == USART6 && hDMA->Instance == DMA2_Channel3) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART6_RX);					
-	// USART 7	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART6_RX);
+	// USART 7
 	} else if (huart->Instance == USART7 && hDMA->Instance == DMA1_Channel1) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH1_USART7_RX);
 	} else if (huart->Instance == USART7 && hDMA->Instance == DMA1_Channel3) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH3_USART7_RX);
 	} else if (huart->Instance == USART7 && hDMA->Instance == DMA1_Channel5) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART7_RX);		
+		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART7_RX);
 	} else if (huart->Instance == USART7 && hDMA->Instance == DMA1_Channel6) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART7_RX);	
+		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART7_RX);
 	} else if (huart->Instance == USART7 && hDMA->Instance == DMA2_Channel2) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART7_RX);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART7_RX);
 	} else if (huart->Instance == USART7 && hDMA->Instance == DMA2_Channel3) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART7_RX);				
-	// USART 8	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART7_RX);
+	// USART 8
 	} else if (huart->Instance == USART8 && hDMA->Instance == DMA1_Channel1) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH1_USART8_RX);
 	} else if (huart->Instance == USART8 && hDMA->Instance == DMA1_Channel3) {
 		__HAL_DMA1_REMAP(HAL_DMA1_CH3_USART8_RX);
 	} else if (huart->Instance == USART8 && hDMA->Instance == DMA1_Channel5) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART8_RX);		
+		__HAL_DMA1_REMAP(HAL_DMA1_CH5_USART8_RX);
 	} else if (huart->Instance == USART8 && hDMA->Instance == DMA1_Channel6) {
-		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART8_RX);	
+		__HAL_DMA1_REMAP(HAL_DMA1_CH6_USART8_RX);
 	} else if (huart->Instance == USART8 && hDMA->Instance == DMA2_Channel2) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART8_RX);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH2_USART8_RX);
 	} else if (huart->Instance == USART8 && hDMA->Instance == DMA2_Channel3) {
-		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART8_RX);					
-	}		
-	
-	__HAL_LINKDMA(huart,hdmarx,*hDMA);	
+		__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART8_RX);
+	}
+
+	__HAL_LINKDMA(huart,hdmarx,*hDMA);
 }
 
 /*-----------------------------------------------------------*/

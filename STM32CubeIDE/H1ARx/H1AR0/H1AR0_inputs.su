@@ -22,4 +22,4 @@ H1AR0_inputs.c:927:13:buttonClickedCallback	0	static
 H1AR0_inputs.c:935:13:buttonDblClickedCallback	0	static
 H1AR0_inputs.c:943:13:buttonPressedForXCallback	0	static
 H1AR0_inputs.c:951:13:buttonReleasedForYCallback	0	static
-H1AR0_inputs.c:73:6:CheckAttachedButtons	88	static
+H1AR0_inputs.c:73:6:CheckAttachedButtons	80	static

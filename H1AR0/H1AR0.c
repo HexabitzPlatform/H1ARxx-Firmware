@@ -289,8 +289,8 @@ void Module_Peripheral_Init(void)
   MX_USART1_UART_Init();
 	
 	/* Bridge USB and P5 ports by default - only if PUSB is not bridged with any other port */
-	if (portStatus[PUSB] != STREAM)
-		Bridge(PUSB, P5);
+//	if (portStatus[PUSB] != STREAM)
+//		Bridge(PUSB, P5);
 	
 }
 /*-----------------------------------------------------------*/
@@ -343,7 +343,7 @@ uint8_t GetPort(UART_HandleTypeDef *huart)
 			return P4;
 	else if (huart->Instance == USART3)
 			return P5;
-	else if (huart->Instance == USART4)
+	else if (huart->Instance == USART1)
 			return P6;
 		
 	return 0;
@@ -357,19 +357,19 @@ uint8_t GetPort(UART_HandleTypeDef *huart)
 Module_Status TransmitData(uint8_t* data,uint16_t Size){
 	Module_Status status=H1AR0_OK;
 
-	if(data!=NULL && Size!=0)
-	{
-	for(int i=0;i<Size;i++)
-		{
-			writePxMutex(PUSB, (char *)&data[0+i], 1, cmd50ms, HAL_MAX_DELAY);
-		}
-
-	}
-	else
-	{
-		status=H1AR0_ERROR;
-
-	}
+//	if(data!=NULL && Size!=0)
+//	{
+//	for(int i=0;i<Size;i++)
+//		{
+//			writePxMutex(PUSB, (char *)&data[0+i], 1, cmd50ms, HAL_MAX_DELAY);
+//		}
+//
+//	}
+//	else
+//	{
+//		status=H1AR0_ERROR;
+//
+//	}
 
 	return status;
 }
