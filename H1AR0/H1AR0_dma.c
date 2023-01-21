@@ -48,6 +48,9 @@ void DMA_Init(void)
 	__DMA1_CLK_ENABLE();
 	__DMA2_CLK_ENABLE();
 	
+
+//	__HAL_RCC_DMA1_CLK_ENABLE();
+
 	/* Initialize messaging RX DMAs x 6 - Update for non-standard MCUs */
 #ifdef _P1
 	DMA_MSG_RX_CH_Init(&msgRxDMA[0], DMA1_Channel1);

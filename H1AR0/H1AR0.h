@@ -25,7 +25,7 @@
 #define	modulePN		_H1AR2
 
 /* Port-related definitions */
-#define	NumOfPorts		6
+#define	NumOfPorts		5
 #define P_PROG 				P1						/* ST factory bootloader UART */
 
 /* Define available ports */
@@ -34,7 +34,7 @@
 #define _P3
 #define _P4 
 #define _P5 
-#define _P6 
+//#define _P6
 #define _PUSB 
 
 /* Define available USARTs */
