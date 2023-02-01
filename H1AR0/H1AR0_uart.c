@@ -196,6 +196,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 
 	    	__HAL_DMA2_REMAP(HAL_DMA2_CH3_USART1_RX);
 
+
 	    __HAL_LINKDMA(huart,hdmarx,hdma_usart1_rx);
   }
   else if(huart->Instance==USART2)
