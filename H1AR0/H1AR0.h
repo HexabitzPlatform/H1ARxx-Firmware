@@ -101,6 +101,9 @@
 
 #define NUM_MODULE_PARAMS		1
 
+
+#define _User_Data_Buffer
+
 /* H01R0_Status Type Definition */  
 typedef enum 
 {
