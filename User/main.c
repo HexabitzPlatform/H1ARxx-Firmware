@@ -7,8 +7,6 @@
  */
 /* Includes ------------------------------------------------------------------*/
 #include "BOS.h"
-uint8_t bufferTx[8]  ="testData";
-
 
 /* Private variables ---------------------------------------------------------*/
 
@@ -33,10 +31,6 @@ void UserTask(void *argument){
 	// put your code here, to run repeatedly.
 	while(1){
 
-		IND_toggle();
-//		TransmitData(bufferTx,8);
-//		Status = HAL_UART_Transmit(&huart1, (uint8_t *)buffer, 8, 0xffff);
-		HAL_Delay(1000);
 
 
 	}
