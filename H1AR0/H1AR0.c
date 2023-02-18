@@ -290,6 +290,7 @@ void Module_Peripheral_Init(void)
   MX_USART1_UART_Init();
 
   HAL_UART_Receive_DMA(&huart1, UserBufferData, sizeof(UserBufferData));
+  DMACountUserDataBuffer=&(DMA2_Channel3->CNDTR);
 	
 }
 /*-----------------------------------------------------------*/
