@@ -17,6 +17,7 @@
 #include "BOS.h"
 #include "H1AR0_eeprom.h"
 
+
 /* Define UART variables */
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
@@ -287,10 +288,9 @@ void Module_Peripheral_Init(void)
 	
 	/* USB port */
   MX_USART1_UART_Init();
-	
-	/* Bridge USB and P5 ports by default - only if PUSB is not bridged with any other port */
-	if (portStatus[PUSB] != STREAM)
-		Bridge(PUSB, P5);
+
+  HAL_UART_Receive_DMA(&huart1, UserBufferData, sizeof(UserBufferData));
+  DMACountUserDataBuffer=&(DMA2_Channel3->CNDTR);
 	
 }
 /*-----------------------------------------------------------*/
@@ -359,10 +359,7 @@ Module_Status TransmitData(uint8_t* data,uint16_t Size){
 
 	if(data!=NULL && Size!=0)
 	{
-	for(int i=0;i<Size;i++)
-		{
-			writePxMutex(PUSB, (char *)&data[0+i], 1, cmd50ms, HAL_MAX_DELAY);
-		}
+		HAL_UART_Transmit(&huart1, data, Size, HAL_MAX_DELAY);
 
 	}
 	else

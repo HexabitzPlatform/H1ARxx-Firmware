@@ -25,7 +25,7 @@
 #define	modulePN		_H1AR2
 
 /* Port-related definitions */
-#define	NumOfPorts		6
+#define	NumOfPorts		5
 #define P_PROG 				P1						/* ST factory bootloader UART */
 
 /* Define available ports */
@@ -34,8 +34,8 @@
 #define _P3
 #define _P4 
 #define _P5 
-#define _P6 
-#define _PUSB 
+//#define _P6
+//#define _PUSB
 
 /* Define available USARTs */
 #define _Usart1 1
@@ -52,7 +52,7 @@
 #define P4uart 			&huart4
 #define P5uart 			&huart3
 #define P6uart 			&huart1
-#define PUSBuart 		P6uart
+//#define PUSBuart 		P6uart
 
 /* Port Definitions */
 #define	USART1_TX_PIN		GPIO_PIN_9
@@ -92,7 +92,7 @@
 #define	USART6_AF			GPIO_AF5_USART6
 
 /* Module-specific Definitions */
-#define PUSB 				P6
+//#define PUSB 				P6
 #define	USART1_RTS_PIN		GPIO_PIN_12
 #define	USART1_CTS_PIN		GPIO_PIN_11
 #define	USART1_RTS_PORT		GPIOA
@@ -100,6 +100,9 @@
 
 
 #define NUM_MODULE_PARAMS		1
+
+/*..........Enable User Data from external ports (like USB, Ethernet, BLE ...)......*/
+#define __USER_DATA_BUFFER
 
 /* H01R0_Status Type Definition */  
 typedef enum 
