@@ -7,8 +7,8 @@ H1AR0_it.c:102:6:USART3_8_IRQHandler	8	static
 H1AR0_it.c:131:6:DMA1_Ch1_IRQHandler	8	static
 H1AR0_it.c:143:6:DMA1_Ch2_3_DMA2_Ch1_2_IRQHandler	8	static
 H1AR0_it.c:162:6:DMA1_Ch4_7_DMA2_Ch3_5_IRQHandler	8	static
-H1AR0_it.c:184:6:HAL_UART_TxCpltCallback	16	static
-H1AR0_it.c:198:6:HAL_UART_ErrorCallback	8	static
-H1AR0_it.c:218:6:HAL_UART_RxCpltCallback	40	static
-H1AR0_it.c:293:6:vApplicationStackOverflowHook	24	static
-H1AR0_it.c:315:6:vApplicationMallocFailedHook	24	static
+H1AR0_it.c:186:6:HAL_UART_TxCpltCallback	16	static
+H1AR0_it.c:200:6:HAL_UART_ErrorCallback	8	static
+H1AR0_it.c:220:6:HAL_UART_RxCpltCallback	40	static
+H1AR0_it.c:295:6:vApplicationStackOverflowHook	24	static
+H1AR0_it.c:317:6:vApplicationMallocFailedHook	24	static
