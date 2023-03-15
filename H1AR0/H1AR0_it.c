@@ -1,5 +1,5 @@
 /*
- BitzOS (BOS) V0.2.7 - Copyright (C) 2017-2022 Hexabitz
+ BitzOS (BOS) V0.2.9 - Copyright (C) 2017-2023 Hexabitz
  All rights reserved
 
  File Name     : H1AR0_it.c
@@ -168,7 +168,9 @@ void DMA1_Ch4_7_DMA2_Ch3_5_IRQHandler(void)
 	} else if (HAL_DMA_GET_IT_SOURCE(DMA1,DMA_ISR_GIF6) == SET) {
 		DMA_IRQHandler(P4);
 	/* Streaming or messaging DMA on P6 */
-	} else if (HAL_DMA_GET_IT_SOURCE(DMA2,DMA_ISR_GIF3) == SET) {
+	}
+	else if (HAL_DMA_GET_IT_SOURCE(DMA2,DMA_ISR_GIF3) == SET) {
+
 		DMA_IRQHandler(P6);
 	/* TX messaging DMA 1 */
 	} else if (HAL_DMA_GET_IT_SOURCE(DMA1,DMA_ISR_GIF4) == SET) {
