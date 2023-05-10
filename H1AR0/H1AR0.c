@@ -30,6 +30,11 @@ UART_HandleTypeDef huart6;
 module_param_t modParam[NUM_MODULE_PARAMS] = {{.paramPtr=NULL, .paramFormat=FMT_FLOAT, .paramName=""}};
 
 /* Private variables ---------------------------------------------------------*/
+uint8_t UserBufferData[USER_RX_BUF_SIZE]={0};
+uint8_t UserData=0;
+uint8_t indexInputUserDataBuffer = 0;
+uint8_t indexProcessUserDataBuffer = 0;
+volatile uint32_t* DMACountUserDataBuffer = NULL;
 
 /* Exported variables */
 extern FLASH_ProcessTypeDef pFlash;
@@ -370,7 +375,54 @@ Module_Status TransmitData(uint8_t* data,uint16_t Size){
 
 	return status;
 }
+/*-------------------------------------------------------------------------*/
+uint8_t GetUserDataCount(void)
+{
+	indexInputUserDataBuffer = USER_RX_BUF_SIZE - (uint8_t)(*DMACountUserDataBuffer);
 
+	if(indexInputUserDataBuffer== indexProcessUserDataBuffer)
+	{
+		return 0;
+	}
+
+	else
+	{
+		if(indexInputUserDataBuffer > indexProcessUserDataBuffer)
+		{
+			return (indexInputUserDataBuffer - indexProcessUserDataBuffer);
+		}
+		else
+		{
+			return (indexInputUserDataBuffer - indexProcessUserDataBuffer + USER_RX_BUF_SIZE);
+		}
+	}
+}
+/*-------------------------------------------------------------------------*/
+Module_Status GetUserDataByte(uint8_t* pData)
+{
+
+	if(GetUserDataCount() != 0)
+	{
+		if(pData == NULL)
+		{
+			return H1AR0_ERROR;
+		}
+
+		*pData =  UserBufferData[indexProcessUserDataBuffer];
+		indexProcessUserDataBuffer++;
+		if(indexProcessUserDataBuffer == USER_RX_BUF_SIZE)
+		{
+			indexProcessUserDataBuffer = 0;
+		}
+		return H1AR0_OK;
+	}
+
+	else
+	{
+		return H1AR0_ERROR;
+	}
+
+}
 /*-----------------------------------------------------------*/
 
 /* -----------------------------------------------------------------------

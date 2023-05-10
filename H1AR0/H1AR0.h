@@ -102,8 +102,8 @@
 #define NUM_MODULE_PARAMS		1
 
 /*..........Enable User Data from external ports (like USB, Ethernet, BLE ...)......*/
-#define __USER_DATA_BUFFER
-
+//#define __USER_DATA_BUFFER
+#define USER_RX_BUF_SIZE  256
 /* H01R0_Status Type Definition */  
 typedef enum 
 {
@@ -116,6 +116,9 @@ typedef enum
 /* Indicator LED */
 #define _IND_LED_PORT		GPIOA
 #define _IND_LED_PIN		GPIO_PIN_6
+
+
+
 
 
 /* Export UART variables */
@@ -145,7 +148,8 @@ extern void SystemClock_Config(void);
 */
 
 extern Module_Status TransmitData(uint8_t* data,uint16_t Size);
-
+extern uint8_t GetUserDataCount(void);
+extern Module_Status GetUserDataByte(uint8_t* pData);
 void SetupPortForRemoteBootloaderUpdate(uint8_t port);
 void remoteBootloaderUpdate(uint8_t src,uint8_t dst,uint8_t inport,uint8_t outport);
 
