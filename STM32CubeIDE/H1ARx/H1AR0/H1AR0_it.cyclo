@@ -1,0 +1,14 @@
+../../Thirdparty/CMSIS/STM32F0xx/Include/core_cm0.h:676:22:NVIC_SystemReset	1
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:33:6:SysTick_Handler	1
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:44:6:HardFault_Handler	0
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:64:6:USART1_IRQHandler	1
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:83:6:USART2_IRQHandler	1
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:102:6:USART3_8_IRQHandler	1
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:131:6:DMA1_Ch1_IRQHandler	1
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:143:6:DMA1_Ch2_3_DMA2_Ch1_2_IRQHandler	4
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:162:6:DMA1_Ch4_7_DMA2_Ch3_5_IRQHandler	6
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:186:6:HAL_UART_TxCpltCallback	2
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:200:6:HAL_UART_ErrorCallback	2
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:220:6:HAL_UART_RxCpltCallback	17
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:295:6:vApplicationStackOverflowHook	0
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_it.c:317:6:vApplicationMallocFailedHook	0

@@ -404,23 +404,18 @@ Module_Status GetUserDataByte(uint8_t* pData)
 	if(GetUserDataCount() != 0)
 	{
 		if(pData == NULL)
-		{
 			return H1AR0_ERROR;
-		}
 
-		*pData =  UserBufferData[indexProcessUserDataBuffer];
+		pData[indexProcessUserDataBuffer] =  UserBufferData[indexProcessUserDataBuffer];
 		indexProcessUserDataBuffer++;
 		if(indexProcessUserDataBuffer == USER_RX_BUF_SIZE)
-		{
 			indexProcessUserDataBuffer = 0;
-		}
+
 		return H1AR0_OK;
 	}
 
 	else
-	{
 		return H1AR0_ERROR;
-	}
 
 }
 /*-----------------------------------------------------------*/

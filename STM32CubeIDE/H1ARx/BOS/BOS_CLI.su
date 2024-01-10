@@ -1,8 +1,8 @@
-BOS_CLI.c:318:6:StringToLowerCase	24	static
-BOS_CLI.c:376:12:ParseSnippetCondition	56	static
-BOS_CLI.c:328:12:AddSnippet	24	static
-BOS_CLI.c:163:6:CLI_CommandParser	80	static
-BOS_CLI.c:53:6:prvCLITask	32	static
-BOS_CLI.c:532:6:ParseSnippetCommand	16	static
-BOS_CLI.c:567:6:CheckSnippetCondition	32	static
-BOS_CLI.c:634:12:ExecuteSnippet	16	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_CLI.c:320:6:StringToLowerCase	12	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_CLI.c:378:12:ParseSnippetCondition	64	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_CLI.c:330:12:AddSnippet	24	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_CLI.c:165:6:CLI_CommandParser	72	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_CLI.c:53:6:prvCLITask	32	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_CLI.c:534:6:ParseSnippetCommand	16	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_CLI.c:569:6:CheckSnippetCondition	32	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_CLI.c:636:12:ExecuteSnippet	16	static

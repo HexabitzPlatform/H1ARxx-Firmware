@@ -1,3 +1,4 @@
-BOS_msgparser.c:108:6:BackEndTask	32	static
-BOS_msgparser.c:1193:19:User_MessagingParser	0	static
-BOS_msgparser.c:173:6:PxMessagingTask	112	static,ignoring_inline_asm
+../../Thirdparty/CMSIS/STM32F0xx/Include/core_cm0.h:676:22:NVIC_SystemReset	0	static,ignoring_inline_asm
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_msgparser.c:110:6:BackEndTask	64	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_msgparser.c:1323:19:User_MessagingParser	0	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_msgparser.c:262:6:PxMessagingTask	96	static

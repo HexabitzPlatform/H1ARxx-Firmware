@@ -141,21 +141,22 @@ extern void SystemClock_Config(void);
 
 
 
-	
+
 /* -----------------------------------------------------------------------
-	|																APIs	 																 	|
+   |		                      	APIs	 						    |
    ----------------------------------------------------------------------- 
 */
 
-extern Module_Status TransmitData(uint8_t* data,uint16_t Size);
 extern uint8_t GetUserDataCount(void);
+extern Module_Status TransmitData(uint8_t* data,uint16_t Size);
 extern Module_Status GetUserDataByte(uint8_t* pData);
+
 void SetupPortForRemoteBootloaderUpdate(uint8_t port);
 void remoteBootloaderUpdate(uint8_t src,uint8_t dst,uint8_t inport,uint8_t outport);
 
 
 /* -----------------------------------------------------------------------
-	|															Commands																 	|
+	|								Commands						 	|
    ----------------------------------------------------------------------- 
 
 */
