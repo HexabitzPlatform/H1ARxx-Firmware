@@ -6,8 +6,8 @@ C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:220:6:remoteBootloaderUpd
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:285:6:Module_Peripheral_Init	1
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:329:6:RegisterModuleCLICommands	1
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:339:9:GetPort	6
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:362:15:TransmitData	3
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:359:15:TransmitData	3
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:305:15:Module_MessagingTask	2
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:427:15:CLI_Transmit_DataCommand	3
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:379:9:GetUserDataCount	3
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:401:15:GetUserDataByte	3
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:424:15:CLI_Transmit_DataCommand	3
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:376:9:GetUserDataCount	3
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0.c:398:15:GetUserDataByte	3

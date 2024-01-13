@@ -48,11 +48,9 @@
 /* Port-UART mapping */
 #define P1uart 			&huart2
 #define P2uart 			&huart6	
-#define P3uart 			&huart5
+#define P3uart 			&huart3
 #define P4uart 			&huart4
-#define P5uart 			&huart3
-#define P6uart 			&huart1
-//#define PUSBuart 		P6uart
+#define P5uart 			&huart5
 
 /* Port Definitions */
 #define	USART1_TX_PIN		GPIO_PIN_9
@@ -85,11 +83,11 @@
 #define	USART5_RX_PORT		GPIOB
 #define	USART5_AF			GPIO_AF4_USART5
 
-#define	USART6_TX_PIN		GPIO_PIN_4
-#define	USART6_RX_PIN		GPIO_PIN_5
-#define	USART6_TX_PORT		GPIOA
-#define	USART6_RX_PORT		GPIOA
-#define	USART6_AF			GPIO_AF5_USART6
+//#define	USART6_TX_PIN		GPIO_PIN_4
+//#define	USART6_RX_PIN		GPIO_PIN_5
+//#define	USART6_TX_PORT		GPIOA
+//#define	USART6_RX_PORT		GPIOA
+//#define	USART6_AF			GPIO_AF5_USART6
 
 /* Module-specific Definitions */
 //#define PUSB 				P6

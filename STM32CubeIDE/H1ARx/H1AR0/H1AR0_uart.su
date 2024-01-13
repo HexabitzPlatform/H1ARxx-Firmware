@@ -4,7 +4,7 @@ C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:68:6:MX_USART3_UART_
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:91:6:MX_USART4_UART_Init	8	static
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:114:6:MX_USART5_UART_Init	8	static
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:137:6:MX_USART6_UART_Init	8	static
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:158:6:HAL_UART_MspInit	96	static
+C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:158:6:HAL_UART_MspInit	88	static
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:443:21:GetUart	0	static
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:336:19:readPxMutex	24	static
 C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_uart.c:356:19:writePxMutex	24	static

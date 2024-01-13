@@ -342,15 +342,12 @@ uint8_t GetPort(UART_HandleTypeDef *huart)
 			return P1;
 	else if (huart->Instance == USART6)
 			return P2;
-	else if (huart->Instance == USART5)
+	else if (huart->Instance == USART3)
 			return P3;
 	else if (huart->Instance == USART4)
 			return P4;
-	else if (huart->Instance == USART3)
+	else if (huart->Instance == USART5)
 			return P5;
-	else if (huart->Instance == USART4)
-			return P6;
-		
 	return 0;
 }
 
