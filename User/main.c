@@ -9,8 +9,6 @@
 #include "BOS.h"
 
 /* Private variables ---------------------------------------------------------*/
-uint8_t buf[4] = {1,2,3,4};
-uint8_t BUFFER[100];
 
 /* Private function prototypes -----------------------------------------------*/
 
@@ -31,9 +29,6 @@ void UserTask(void *argument){
 
 	// put your code here, to run repeatedly.
 	while(1){
-//		GetUserDataByte(BUFFER);
-
-//		TransmitData(buf, 4);
 
 	}
 }

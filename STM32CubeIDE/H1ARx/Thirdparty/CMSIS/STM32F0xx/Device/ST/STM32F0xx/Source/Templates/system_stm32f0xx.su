@@ -1,2 +1,2 @@
-system_stm32f0xx.c:159:6:SystemInit	0	static
-system_stm32f0xx.c:256:6:SystemCoreClockUpdate	8	static
+F:/HDD/Hexabiz_G0/H1ARxx/Thirdparty/CMSIS/STM32F0xx/Device/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c:159:6:SystemInit	0	static
+F:/HDD/Hexabiz_G0/H1ARxx/Thirdparty/CMSIS/STM32F0xx/Device/ST/STM32F0xx/Source/Templates/system_stm32f0xx.c:256:6:SystemCoreClockUpdate	8	static
