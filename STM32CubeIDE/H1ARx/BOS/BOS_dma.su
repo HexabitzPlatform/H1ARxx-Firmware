@@ -1,3 +1,3 @@
-D:/Hexabitz release/H1ARxx/BOS/BOS_dma.c:47:12:StartDMAstream	24	static
-D:/Hexabitz release/H1ARxx/BOS/BOS_dma.c:82:6:DMA_IRQHandler	16	static
-D:/Hexabitz release/H1ARxx/BOS/BOS_dma.c:100:6:ResetUartORE	0	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_dma.c:47:12:StartDMAstream	24	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_dma.c:82:6:DMA_IRQHandler	16	static
+C:/Users/adool/Documents/H1ARxx-Firmware/BOS/BOS_dma.c:100:6:ResetUartORE	0	static

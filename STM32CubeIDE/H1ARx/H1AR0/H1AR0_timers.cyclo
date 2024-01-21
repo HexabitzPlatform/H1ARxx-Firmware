@@ -1,4 +1,4 @@
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_timers.c:31:6:TIM_USEC_Init	1
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_timers.c:58:6:TIM_MSEC_Init	1
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_timers.c:83:6:StartMicroDelay	3
-C:/Users/adool/Documents/H1ARxx-Firmware/H1AR0/H1AR0_timers.c:103:6:StartMilliDelay	3
+H1AR0_timers.c:31:6:TIM_USEC_Init	1
+H1AR0_timers.c:58:6:TIM_MSEC_Init	1
+H1AR0_timers.c:83:6:StartMicroDelay	3
+H1AR0_timers.c:103:6:StartMilliDelay	3
