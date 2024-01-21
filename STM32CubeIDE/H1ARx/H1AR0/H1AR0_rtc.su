@@ -1,4 +1,4 @@
-F:/HDD/Hexabiz_G0/H1ARxx/H1AR0/H1AR0_rtc.c:83:12:RTC_CalendarConfig	80	static
-F:/HDD/Hexabiz_G0/H1ARxx/H1AR0/H1AR0_rtc.c:31:12:RTC_Init	8	static
-F:/HDD/Hexabiz_G0/H1ARxx/H1AR0/H1AR0_rtc.c:138:12:BOS_CalendarConfig	48	static
-F:/HDD/Hexabiz_G0/H1ARxx/H1AR0/H1AR0_rtc.c:193:6:GetTimeDate	48	static
+D:/Hexabitz release/H1ARxx/H1AR0/H1AR0_rtc.c:83:12:RTC_CalendarConfig	80	static
+D:/Hexabitz release/H1ARxx/H1AR0/H1AR0_rtc.c:31:12:RTC_Init	8	static
+D:/Hexabitz release/H1ARxx/H1AR0/H1AR0_rtc.c:138:12:BOS_CalendarConfig	48	static
+D:/Hexabitz release/H1ARxx/H1AR0/H1AR0_rtc.c:193:6:GetTimeDate	48	static
