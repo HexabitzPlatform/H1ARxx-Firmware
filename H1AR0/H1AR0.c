@@ -1,5 +1,5 @@
 /*
- BitzOS (BOS) V0.2.9 - Copyright (C) 2017-2023 Hexabitz
+ BitzOS (BOS) V0.3.0 - Copyright (C) 2017-2024 Hexabitz
  All rights reserved
 
     File Name     : H1AR0.c
@@ -30,6 +30,11 @@ UART_HandleTypeDef huart6;
 module_param_t modParam[NUM_MODULE_PARAMS] = {{.paramPtr=NULL, .paramFormat=FMT_FLOAT, .paramName=""}};
 
 /* Private variables ---------------------------------------------------------*/
+uint8_t UserBufferData[USER_RX_BUF_SIZE]={0};
+uint8_t UserData=0;
+uint8_t indexInputUserDataBuffer = 0;
+uint8_t indexProcessUserDataBuffer = 0;
+volatile uint32_t* DMACountUserDataBuffer = NULL;
 
 /* Exported variables */
 extern FLASH_ProcessTypeDef pFlash;
@@ -337,15 +342,12 @@ uint8_t GetPort(UART_HandleTypeDef *huart)
 			return P1;
 	else if (huart->Instance == USART6)
 			return P2;
-	else if (huart->Instance == USART5)
+	else if (huart->Instance == USART3)
 			return P3;
 	else if (huart->Instance == USART4)
 			return P4;
-	else if (huart->Instance == USART3)
+	else if (huart->Instance == USART5)
 			return P5;
-	else if (huart->Instance == USART4)
-			return P6;
-		
 	return 0;
 }
 
@@ -370,7 +372,49 @@ Module_Status TransmitData(uint8_t* data,uint16_t Size){
 
 	return status;
 }
+/*-------------------------------------------------------------------------*/
+uint8_t GetUserDataCount(void)
+{
+	indexInputUserDataBuffer = USER_RX_BUF_SIZE - (uint8_t)(*DMACountUserDataBuffer);
 
+	if(indexInputUserDataBuffer== indexProcessUserDataBuffer)
+	{
+		return 0;
+	}
+
+	else
+	{
+		if(indexInputUserDataBuffer > indexProcessUserDataBuffer)
+		{
+			return (indexInputUserDataBuffer - indexProcessUserDataBuffer);
+		}
+		else
+		{
+			return (indexInputUserDataBuffer - indexProcessUserDataBuffer + USER_RX_BUF_SIZE);
+		}
+	}
+}
+/*-------------------------------------------------------------------------*/
+Module_Status GetUserDataByte(uint8_t* pData)
+{
+
+	if(GetUserDataCount() != 0)
+	{
+		if(pData == NULL)
+			return H1AR0_ERROR;
+
+		pData[indexProcessUserDataBuffer] =  UserBufferData[indexProcessUserDataBuffer];
+		indexProcessUserDataBuffer++;
+		if(indexProcessUserDataBuffer == USER_RX_BUF_SIZE)
+			indexProcessUserDataBuffer = 0;
+
+		return H1AR0_OK;
+	}
+
+	else
+		return H1AR0_ERROR;
+
+}
 /*-----------------------------------------------------------*/
 
 /* -----------------------------------------------------------------------

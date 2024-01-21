@@ -1,0 +1,4 @@
+H1AR0_rtc.c:83:12:RTC_CalendarConfig	5
+H1AR0_rtc.c:31:12:RTC_Init	5
+H1AR0_rtc.c:138:12:BOS_CalendarConfig	6
+H1AR0_rtc.c:193:6:GetTimeDate	1

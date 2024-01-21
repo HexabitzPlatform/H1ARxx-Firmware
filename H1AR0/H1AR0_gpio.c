@@ -1,5 +1,5 @@
 /*
- BitzOS (BOS) V0.2.9 - Copyright (C) 2017-2023 Hexabitz
+ BitzOS (BOS) V0.3.0 - Copyright (C) 2017-2024 Hexabitz
  All rights reserved
 
  File Name     : H1AR0_gpio.c
@@ -97,15 +97,15 @@ BOS_Status GetPortGPIOs(uint8_t port, uint32_t *TX_Port, uint16_t *TX_Pin, uint3
 		*RX_Pin = USART5_RX_PIN;
 	} 
 #endif
-#ifdef _Usart6	
-	else if (huart == &huart6) 
-	{	
-		*TX_Port = (uint32_t)USART6_TX_PORT;
-		*TX_Pin = USART6_TX_PIN;
-		*RX_Port = (uint32_t)USART6_RX_PORT;
-		*RX_Pin = USART6_RX_PIN;
-	} 
-#endif
+//#ifdef _Usart6
+//	else if (huart == &huart6)
+//	{
+//		*TX_Port = (uint32_t)USART6_TX_PORT;
+//		*TX_Pin = USART6_TX_PIN;
+//		*RX_Port = (uint32_t)USART6_RX_PORT;
+//		*RX_Pin = USART6_RX_PIN;
+//	}
+//#endif
 #ifdef _Usart7
 	else if (huart == &huart7) 
 	{		

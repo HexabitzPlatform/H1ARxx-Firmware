@@ -1,5 +1,5 @@
 /*
- BitzOS (BOS) V0.2.9 - Copyright (C) 2017-2023 Hexabitz
+ BitzOS (BOS) V0.3.0 - Copyright (C) 2017-2024 Hexabitz
  All rights reserved
 
  File Name     : H1AR0_it.c
@@ -144,7 +144,7 @@ void DMA1_Ch2_3_DMA2_Ch1_2_IRQHandler(void)
 {
 	/* Streaming or messaging DMA on P5 */
 	if (HAL_DMA_GET_IT_SOURCE(DMA2,DMA_ISR_GIF2) == SET) {
-		DMA_IRQHandler(P5);
+		DMA_IRQHandler(P3);
 	/* Streaming or messaging DMA on P2 */
 	} else if (HAL_DMA_GET_IT_SOURCE(DMA1,DMA_ISR_GIF3) == SET) {
 		DMA_IRQHandler(P2);
@@ -162,16 +162,12 @@ void DMA1_Ch2_3_DMA2_Ch1_2_IRQHandler(void)
 void DMA1_Ch4_7_DMA2_Ch3_5_IRQHandler(void)
 {
 	/* Streaming or messaging DMA on P3 */
-	if (HAL_DMA_GET_IT_SOURCE(DMA1,DMA_ISR_GIF5) == SET) {
-		DMA_IRQHandler(P3);
+	if (HAL_DMA_GET_IT_SOURCE(DMA2,DMA_ISR_GIF3) == SET) {
+		DMA_IRQHandler(P5);
 	/* Streaming or messaging DMA on P4 */
-	} else if (HAL_DMA_GET_IT_SOURCE(DMA1,DMA_ISR_GIF6) == SET) {
+	} else if (HAL_DMA_GET_IT_SOURCE(DMA1,DMA_ISR_GIF5) == SET) {
 		DMA_IRQHandler(P4);
-	/* Streaming or messaging DMA on P6 */
-	}
-	else if (HAL_DMA_GET_IT_SOURCE(DMA2,DMA_ISR_GIF3) == SET) {
 
-		DMA_IRQHandler(P6);
 	/* TX messaging DMA 1 */
 	} else if (HAL_DMA_GET_IT_SOURCE(DMA1,DMA_ISR_GIF4) == SET) {
 		HAL_DMA_IRQHandler(&msgTxDMA[1]);
@@ -289,7 +285,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 		}
 	}
 
-		HAL_UART_Receive_DMA(huart,(uint8_t* )&Rx_Data[GetPort(huart) - 1] , 1);
+//		HAL_UART_Receive_DMA(huart,(uint8_t* )&Rx_Data[GetPort(huart) - 1] , 1);
+	HAL_UART_Receive_IT(huart,(uint8_t* )&Rx_Data[GetPort(huart) - 1] , 1);
 }
 
 

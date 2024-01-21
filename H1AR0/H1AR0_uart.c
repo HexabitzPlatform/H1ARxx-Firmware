@@ -1,5 +1,5 @@
 /*
- BitzOS (BOS) V0.2.9 - Copyright (C) 2017-2023 Hexabitz
+ BitzOS (BOS) V0.3.0 - Copyright (C) 2017-2024 Hexabitz
  All rights reserved
 
  File Name     : H1AR0_uart.c
@@ -303,32 +303,32 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     HAL_NVIC_EnableIRQ(USART3_8_IRQn);
 	#endif
   }
-  else if(huart->Instance==USART6)
-  {
-	#ifdef _Usart6
-    /* Peripheral clock enable */
-    __USART6_CLK_ENABLE();
+//  else if(huart->Instance==USART6)
+//  {
+//	#ifdef _Usart6
+//    /* Peripheral clock enable */
+//    __USART6_CLK_ENABLE();
   
     /* USART6 GPIO Configuration */
-    GPIO_InitStruct.Pin = USART6_TX_PIN; 
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_PULLUP;
-    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
-    GPIO_InitStruct.Alternate = USART6_AF;	
-    HAL_GPIO_Init(USART6_TX_PORT, &GPIO_InitStruct);
-		
-		GPIO_InitStruct.Pin = USART6_RX_PIN;  
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_PULLUP;
-    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
-    GPIO_InitStruct.Alternate = USART6_AF;
-    HAL_GPIO_Init(USART6_RX_PORT, &GPIO_InitStruct);
+//    GPIO_InitStruct.Pin = USART6_TX_PIN;
+//    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+//    GPIO_InitStruct.Pull = GPIO_PULLUP;
+//    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+//    GPIO_InitStruct.Alternate = USART6_AF;
+//    HAL_GPIO_Init(USART6_TX_PORT, &GPIO_InitStruct);
+//
+//		GPIO_InitStruct.Pin = USART6_RX_PIN;
+//    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+//    GPIO_InitStruct.Pull = GPIO_PULLUP;
+//    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+//    GPIO_InitStruct.Alternate = USART6_AF;
+//    HAL_GPIO_Init(USART6_RX_PORT, &GPIO_InitStruct);
 
     /* Peripheral interrupt init*/
-    HAL_NVIC_SetPriority(USART3_8_IRQn, 1, 0);
-    HAL_NVIC_EnableIRQ(USART3_8_IRQn);
-	#endif
-  }
+//    HAL_NVIC_SetPriority(USART3_8_IRQn, 1, 0);
+//    HAL_NVIC_EnableIRQ(USART3_8_IRQn);
+//	#endif
+//  }
 }
 
 /* --- Blocking (polling-based) read protected with a semaphore --- 

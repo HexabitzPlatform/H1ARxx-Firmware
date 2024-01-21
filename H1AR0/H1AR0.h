@@ -1,5 +1,5 @@
 /*
-    BitzOS (BOS) V0.2.9 - Copyright (C) 2017-2023 Hexabitz
+    BitzOS (BOS) V0.3.0 - Copyright (C) 2017-2024 Hexabitz
     All rights reserved
 		
     File Name     : H1AR0.c
@@ -48,11 +48,9 @@
 /* Port-UART mapping */
 #define P1uart 			&huart2
 #define P2uart 			&huart6	
-#define P3uart 			&huart5
+#define P3uart 			&huart3
 #define P4uart 			&huart4
-#define P5uart 			&huart3
-#define P6uart 			&huart1
-//#define PUSBuart 		P6uart
+#define P5uart 			&huart5
 
 /* Port Definitions */
 #define	USART1_TX_PIN		GPIO_PIN_9
@@ -85,11 +83,11 @@
 #define	USART5_RX_PORT		GPIOB
 #define	USART5_AF			GPIO_AF4_USART5
 
-#define	USART6_TX_PIN		GPIO_PIN_4
-#define	USART6_RX_PIN		GPIO_PIN_5
-#define	USART6_TX_PORT		GPIOA
-#define	USART6_RX_PORT		GPIOA
-#define	USART6_AF			GPIO_AF5_USART6
+//#define	USART6_TX_PIN		GPIO_PIN_4
+//#define	USART6_RX_PIN		GPIO_PIN_5
+//#define	USART6_TX_PORT		GPIOA
+//#define	USART6_RX_PORT		GPIOA
+//#define	USART6_AF			GPIO_AF5_USART6
 
 /* Module-specific Definitions */
 //#define PUSB 				P6
@@ -102,8 +100,8 @@
 #define NUM_MODULE_PARAMS		1
 
 /*..........Enable User Data from external ports (like USB, Ethernet, BLE ...)......*/
-#define __USER_DATA_BUFFER
-
+//#define __USER_DATA_BUFFER
+#define USER_RX_BUF_SIZE  256
 /* H01R0_Status Type Definition */  
 typedef enum 
 {
@@ -116,6 +114,9 @@ typedef enum
 /* Indicator LED */
 #define _IND_LED_PORT		GPIOA
 #define _IND_LED_PIN		GPIO_PIN_6
+
+
+
 
 
 /* Export UART variables */
@@ -138,20 +139,22 @@ extern void SystemClock_Config(void);
 
 
 
-	
+
 /* -----------------------------------------------------------------------
-	|																APIs	 																 	|
+   |		                      	APIs	 						    |
    ----------------------------------------------------------------------- 
 */
 
+extern uint8_t GetUserDataCount(void);
 extern Module_Status TransmitData(uint8_t* data,uint16_t Size);
+extern Module_Status GetUserDataByte(uint8_t* pData);
 
 void SetupPortForRemoteBootloaderUpdate(uint8_t port);
 void remoteBootloaderUpdate(uint8_t src,uint8_t dst,uint8_t inport,uint8_t outport);
 
 
 /* -----------------------------------------------------------------------
-	|															Commands																 	|
+	|								Commands						 	|
    ----------------------------------------------------------------------- 
 
 */
